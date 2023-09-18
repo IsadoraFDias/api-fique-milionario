@@ -62,7 +62,7 @@ router.delete("/", (req, res) => {
 });
 
 const server = express();
-server.use(cors({ origin: "http://localhost:5500" }));
+server.use(cors({ origin: "https://fique-milionario-front.vercel.app/" }));
 server.use(json());
 server.listen(8080, () => {
     console.log("Servidor está ouvindo na porta 8080");
