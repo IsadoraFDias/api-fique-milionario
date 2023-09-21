@@ -8,11 +8,11 @@ const server = express();
 server.use(helmet({
     directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "http://localhost:5500"],
+        scriptSrc: ["'self'", "https://fique-milionario-front.vercel.app/"],
     }
 }));
 
-server.use(cors({ origin: 'http://localhost:5500' })); 
+server.use(cors({ origin: 'https://fique-milionario-front.vercel.app/' })); 
 server.use(json());
 server.use('/', controller);
 
