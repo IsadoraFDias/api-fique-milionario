@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "helmet": "^7.0.0",
     "jekyll": "^3.0.0-beta1",
     "vercel": "^32.2.4"
   }

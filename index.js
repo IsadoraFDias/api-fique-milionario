@@ -1,8 +1,17 @@
 import express, { json } from "express";
 import controller from "./controller.js";
+import helmet from "helmet";
 import cors from "cors";
 
 const server = express();
+
+server.use(helmet({
+    directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "http://localhost:5500"],
+    }
+}));
+
 server.use(cors({ origin: 'http://localhost:5500' })); 
 server.use(json());
 server.use('/', controller);
