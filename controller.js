@@ -26,6 +26,7 @@ function sorteioPremiado(loteria) {
         if (!numerosSorteados.includes(numero)) {
             numerosSorteados.push(numero);
         }
+        numerosSorteados.sort((a, b) => a - b);
     }
 
     return numerosSorteados;
