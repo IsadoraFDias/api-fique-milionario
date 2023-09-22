@@ -1,6 +1,6 @@
 import express from "express";
 
-const router = express.Router();
+const surpresinha = express.Router();
 
 let numerosSorteados = [];
 
@@ -32,7 +32,9 @@ function sorteioPremiado(loteria) {
     return numerosSorteados;
 }
 
-router.post("/", (req, res) => {
+
+
+surpresinha.post("/", (req, res) => {
     const { loteria } = req.body;
     try {
         if (loteria >= 1 && loteria < 4) {
@@ -47,14 +49,14 @@ router.post("/", (req, res) => {
     }
 });
 
-router.get("/", (req, res) => {
+surpresinha.get("/", (req, res) => {
     const numerosSorteados2 = JSON.parse(JSON.stringify(numerosSorteados));
     res.send(numerosSorteados2);
 });
 
-router.delete("/", (req, res) => {
+surpresinha.delete("/", (req, res) => {
     numerosSorteados = [];
     res.send("Números sorteados apagados");
 });
 
-export default router;
+export default surpresinha;

@@ -1,5 +1,5 @@
 import express, { json } from "express";
-import controller from "./controller.js";
+import controller from "./surpresinha/controller.js";
 import helmet from "helmet";
 import cors from "cors";
 
@@ -15,6 +15,7 @@ server.use(helmet({
 server.use(cors({ origin: 'https://fique-milionario-front.vercel.app' })); 
 server.use(json());
 server.use('/', controller);
+server.use('/surpresinha', controller);
 
 server.listen(8080, () => {
     console.log('Servidor está ouvindo na porta 8080');
