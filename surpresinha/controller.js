@@ -3,34 +3,40 @@ import express from "express";
 const surpresinha = express.Router();
 
 let numerosSorteados = [];
+let numeroMaximo;
+let quantidadeNumerosSorteados;
 
 function sorteioPremiado(loteria) {
-    let numeroMaximo;
 
     switch (loteria) {
         case 1:
             numeroMaximo = 60;
+            quantidadeNumerosSorteados = 6;
             break;
         case 2:
             numeroMaximo = 80;
+            quantidadeNumerosSorteados = 5;
             break;
         case 3:
             numeroMaximo = 25;
+            quantidadeNumerosSorteados = 15;
             break;
         default:
             throw new Error("Loteria inválida");
     }
 
-    while (numerosSorteados.length < (loteria === 1 ? 6 : (loteria === 2 ? 5 : 15))) {
+
+    while (numerosSorteados.length < quantidadeNumerosSorteados) {
         const numero = Math.floor(Math.random() * numeroMaximo) + 1;
         if (!numerosSorteados.includes(numero)) {
             numerosSorteados.push(numero);
         }
-        numerosSorteados.sort((a, b) => a - b);
     }
+    numerosSorteados.sort((a, b) => a - b);
 
     return numerosSorteados;
 }
+
 
 
 
@@ -56,6 +62,8 @@ surpresinha.get("/", (req, res) => {
 
 surpresinha.delete("/", (req, res) => {
     numerosSorteados = [];
+    numeroMaximo = 0;
+    quantidadeNumerosSorteados  = 0;
     res.send("Números sorteados apagados");
 });
 
