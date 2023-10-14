@@ -36,10 +36,9 @@ resultado.get("/:loteria/:concurso", async (req, res) => {
 });
 
 resultado.delete("/:loteria/:concurso", async (req, res) => {
-    const { loteria, concurso } = req.params;
     try {
-        await deleteResultado(loteria, concurso);
-        res.status(204).send();
+       const resultadoData = await getResultado('', '');
+        res.status(204).json(resultadoData);
     } catch (error) {
         res.status(400).send(error.message);
     }
