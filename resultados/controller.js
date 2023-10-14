@@ -2,7 +2,7 @@ import express from "express";
 import axios from "axios";
 
 const resultado = express.Router();
-
+let resultadoData;
 
 async function getResultado(loteria, concurso) {
     const apiResultado = `https://loteriascaixa-api.herokuapp.com/api/${loteria}/${concurso}`;
@@ -28,13 +28,23 @@ resultado.post("/:loteria/:concurso", async (req, res) => {
 resultado.get("/:loteria/:concurso", async (req, res) => {
     const { loteria, concurso } = req.params;
     try {
-
-            const resultadoData = await getResultado(loteria, concurso);
-            res.status(200).json(resultadoData);
+        const resultadoData = await getResultado(loteria, concurso);
+        res.status(200).json(resultadoData);
     } catch (error) {
         res.status(400).send(error.message);
     }
 });
- 
+
+resultado.delete("/:loteria/:concurso", async (req, res) => {
+    const { loteria, concurso } = req.params;
+    try {
+        await deleteResultado(loteria, concurso);
+        res.status(204).send();
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+});
+
+
 
 export default resultado;
