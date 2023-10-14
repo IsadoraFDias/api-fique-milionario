@@ -9,10 +9,10 @@ const server = express();
 server.use(helmet({
     directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "http://localhost:3000"],
+        scriptSrc: ["'self'", "https://fique-milionario-remix.vercel.app"],
     }
 }));
-server.use(cors({ origin: 'http://localhost:3000' }));
+server.use(cors({ origin: 'https://fique-milionario-remix.vercel.app' }));
 server.use(express.json());
 
 server.use('/', surpresinha);
